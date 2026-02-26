@@ -1,0 +1,7 @@
+matplotlib
+numpy
+pandas
+geopandas
+folium
+ipywidgets
+jupyterlab-git
