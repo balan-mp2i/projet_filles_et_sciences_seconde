@@ -5,7 +5,8 @@ from ipywidgets import interact
 import pandas
 import folium
 
-_nantes = geopandas.read_file("244400404_adresses-postales-nantes-metropole.geojson")[["commune", "nom_voie", "numero_complet", "quartier", "lat", "long", "code_postal", "adresse"]]
+# _nantes = geopandas.read_file("244400404_adresses-postales-nantes-metropole.geojson")[["commune", "nom_voie", "numero_complet", "quartier", "lat", "long", "code_postal", "adresse"]]
+_nantes = geopandas.read_file("https://data.nantesmetropole.fr/api/explore/v2.1/catalog/datasets/244400404_adresses-postales-nantes-metropole/exports/geojson")[["commune", "nom_voie", "numero_complet", "quartier", "lat", "long", "code_postal", "adresse"]]
 
 def selection(commune = None, quartier = None, voie = None, numero = None, n = 10):
     results = _nantes.copy()
