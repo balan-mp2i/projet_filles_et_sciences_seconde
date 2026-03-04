@@ -28,6 +28,11 @@ class Données:
     def coordonnées(self, patient: Identifiant) -> tuple[Latitude, Longitude]:
         return (self.données[patient].latitude, self.données[patient].longitude)
 
+    def latitude(self, patient: Identifiant) -> Latitude:
+        return self.données[patient].latitude 
+
+    def longitude(self, patient: Identifiant) -> Longitude:
+        return self.données[patient].longitude 
 
     def nombre_patients(self):
         return len(self.données.keys())-1
@@ -85,7 +90,7 @@ class Trajet:
         self.trajet.insert(-1, patient)
         self.patients[patient] = True
 
-    def patients_à_visiter(self) -> None:
+    def patients_à_visiter(self) -> list[Identifiant]:
         ps = [p  for p in self.patients if not self.patients[p]]
         print("Patients à voir : ")
         for p in ps:
@@ -115,7 +120,7 @@ class Trajet:
         return min([p for p in self.patients if not self.patients[p]], key = lambda p: _distance(self.données, localisation, p))
         
     def __repr__(self):
-        return " -> ".join(self.trajet)
+        return " ==> ".join(self.trajet)
     
 def _distance(données: Données, source: Identifiant, cible: Identifiant) -> float:
     (phi_a, lambda_a) = données.coordonnées(source)
