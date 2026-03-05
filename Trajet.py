@@ -1,6 +1,7 @@
 import random as rd
 import numpy as np
 from faker import Faker
+import pickle
 
 Identifiant = str
 Latitude = float
@@ -150,3 +151,5 @@ class Jeux:
                 p = fake.name()
                 données[p] = Patient(p, d.lat, d.long)
         self.jeux[nom] = Données(données)
+        with open("jeux_données.pickle", "w") as out:
+            pickle.dum(self.jeux, out)
