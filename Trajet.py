@@ -151,5 +151,5 @@ class Jeux:
                 p = fake.name()
                 données[p] = Patient(p, d.lat, d.long)
         self.jeux[nom] = Données(données)
-        with open("jeux_données.pickle", "w") as out:
-            pickle.dum(self.jeux, out)
+        with open("jeux_données.pickle", "wb") as out:
+            pickle.dump(self.jeux, out)
