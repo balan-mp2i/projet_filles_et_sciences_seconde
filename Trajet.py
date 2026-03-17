@@ -153,3 +153,12 @@ class Jeux:
         self.jeux[nom] = Données(données)
         with open("jeux_données.pickle", "wb") as out:
             pickle.dump(self.jeux, out)
+
+def hidden_trajet_glouton(données: Données) -> Trajet:
+    n = données.nombre_patients()
+    trajet = Trajet(données)
+    for i in range(n):
+        # choix glouton
+        prochain_patient = trajet.plus_proche_patient()
+        trajet.insère_patient(prochain_patient)
+    return trajet
